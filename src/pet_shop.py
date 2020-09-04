@@ -29,3 +29,33 @@ def get_pets_by_breed(pet_shop, breed_name):
             list_of_breeds.append(pet_shop['pets'])
     return list_of_breeds
     
+def find_pet_by_name(pet_shop, pet_name):
+    for pet in pet_shop['pets']:        # for lists use for loop
+        if pet['name'] == pet_name:
+            return pet
+
+def remove_pet_by_name(pet_shop, pet_name):
+    new_pet = find_pet_by_name(pet_shop, pet_name)
+    remove_pet = pet_shop['pets'].remove(new_pet)
+    return remove_pet
+        
+def add_pet_to_stock(pet_shop, pet_name):
+    pet_shop['pets'].append(pet_name)      # for dict 
+    new_pets = get_stock_count(pet_shop)
+    return new_pets
+
+def get_customer_cash(customers):
+    return customers['cash']
+
+def remove_customer_cash(customers, amount):
+    customers['cash'] -= amount
+
+def get_customer_pet_count(customers):
+    return len(customers['pets'])
+
+def add_pet_to_customer(customers, new_pet):
+    customers['pets'].append(new_pet)
+    pet_counter = get_customer_pet_count(customers)
+    return pet_counter
+
+
