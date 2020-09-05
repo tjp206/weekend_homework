@@ -30,7 +30,7 @@ def get_pets_by_breed(pet_shop, breed_name):
     return list_of_breeds
     
 def find_pet_by_name(pet_shop, pet_name):
-    for pet in pet_shop['pets']:        # for lists use for loop
+    for pet in pet_shop['pets']:        # for lists
         if pet['name'] == pet_name:
             return pet
 
@@ -58,4 +58,26 @@ def add_pet_to_customer(customers, new_pet):
     pet_counter = get_customer_pet_count(customers)
     return pet_counter
 
+def customer_can_afford_pet(customers, new_pet):
+    if customers['cash'] >= new_pet['price']:
+        return True
+    # elif customers['cash'] < new_pet['price']:
+    #     return False
+    # elif customers['cash'] == new_pet['price']:
+    #     return True
+    else: 
+        return False
 
+def sell_pet_to_customer(pet_shop, new_pet, customers):
+    #Check customer can afford pet
+    #If True add pet to customer
+    #Then add to pet_shop sold count
+    #Deduct cost of pet from customer
+    #Add cost of pet to pet shop total cash
+    if customer_can_afford_pet(customers, new_pet):
+        add_pet_to_customer(customers, new_pet)
+        increase_pets_sold(pet_shop, 1)
+        remove_customer_cash(customers, new_pet['price'])
+        add_or_remove_cash(pet_shop, new_pet['price'])
+    elif customer_can_afford_pet(customers, new_pet):
+        
