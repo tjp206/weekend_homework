@@ -79,5 +79,12 @@ def sell_pet_to_customer(pet_shop, new_pet, customers):
         increase_pets_sold(pet_shop, 1)
         remove_customer_cash(customers, new_pet['price'])
         add_or_remove_cash(pet_shop, new_pet['price'])
-    elif customer_can_afford_pet(customers, new_pet):
-        
+        # Everything runs until here - WHY TJ?! WHY?!?!
+    # elif find_pet_by_name(pet_shop['pets']['name']):
+    #     add_pet_to_customer(customers, new_pet)
+    #     increase_pets_sold(pet_shop, 0)
+    #     remove_customer_cash(customers, new_pet['price'])
+    #     add_or_remove_cash(pet_shop, new_pet['price'])
+    else:
+        return False
+
